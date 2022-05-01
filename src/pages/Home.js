@@ -1,39 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useQuill } from 'react-quilljs';
-import 'quill/dist/quill.bubble.css'
+import TextEditor from '../components/textEditor/textEditor';
+import UploadImages from '../components/imageUploader/uploadImages';
+import Select from '../components/selectionBox/select';
+import './home.css';
 
 export default function Home() {
-    
-  const theme = 'bubble';
+  const [showText, setTextState] = useState(true);
 
-  const modules = {
-    toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],
-    ],
-  };
-
-  const placeholder = 'Write or Paste any text...';
-
-  const formats = ['bold', 'italic', 'underline', 'strike'];
-
-  const { quillRef } = useQuill({ theme, modules, formats, placeholder });
-
-
+  function selectedEditor(data){
+    data === "text" ? setTextState(true) : setTextState(false);
+  }
     return (
     <Container>
   <Row>
     <Col>
-        <header>Editor</header>
+        <header>React Quill Task</header>
+    </Col>
+  </Row>
+  <Row>
+    <Col>{
+          showText ? <TextEditor></TextEditor> : <UploadImages></UploadImages> 
+        }
     </Col>
   </Row>
   <Row>
     <Col>
-        <div style={{ width: 500, height: 300, border: '1px solid lightgray' }}>
-             <div ref={quillRef} />
-        </div>
+      <Select selectedEditor={selectedEditor}></Select>
     </Col>
   </Row>
 </Container>

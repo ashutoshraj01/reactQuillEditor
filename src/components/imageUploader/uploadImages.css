@@ -1,0 +1,7 @@
+input[type='file'] {
+    color: rgba(0, 0, 0, 0)
+  }
+  #imgfile{
+    margin-left: 200px;
+    margin-bottom: 10px;
+  }

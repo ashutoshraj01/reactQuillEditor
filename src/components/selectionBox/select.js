@@ -15,8 +15,11 @@ export default function Select(props) {
     }
 
     function setSelectedState(e){
+        let id;
+        if(e.target.id === 'text' || e.target.id === 'textLabel1' || e.target.id === 'textLabel2' )  id = "text";
+        else id = "image";
         setSelectionStatus(false);
-        selectedEditor(e.target.id);
+        selectedEditor(id);
     }
 
     return (
@@ -35,8 +38,8 @@ export default function Select(props) {
                                                     <Row id="textWrapper">
                                                         <Col>Aa</Col>
                                                         <Col id="text" onClick={setSelectedState}>
-                                                            <span>Text</span>
-                                                            <p>Just start writing with plain text</p>
+                                                            <span id="textLabel1">Text</span>
+                                                            <p id="textLabel2">Just start writing with plain text</p>
                                                         </Col>
                                                     </Row>
                                                 </Col>
@@ -48,8 +51,8 @@ export default function Select(props) {
                                                            <FontAwesomeIcon icon={faImage} />
                                                         </Col>
                                                         <Col id="image" onClick={setSelectedState}>
-                                                            <span>Image</span>
-                                                            <p>Upload or embed with a link</p>
+                                                            <span id="imageLabel">Image</span>
+                                                            <p id="imageLabe2">Upload or embed with a link</p>
                                                         </Col>
                                                     </Row>
                                                 </Col>
